@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UsersDBApi2.Models;
 
+
 namespace UsersDBApi2
 {
     public class Startup
@@ -26,9 +27,10 @@ namespace UsersDBApi2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration.GetConnectionString("DBConnection");
-            services.AddDbContextPool<UserContext>(options => options.UseSqlServer(connection));
-            services.AddControllers();
+           var connection = Configuration.GetConnectionString("DBConnection");
+           services.AddDbContextPool<UserContext>(options => options.UseSqlServer(connection));
+           services.AddControllers();
+
 
             //services.AddDbContext<UserContext>(opt => opt.UseInMemoryDatabase("UserList"));
         }
