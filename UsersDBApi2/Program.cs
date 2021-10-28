@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UsersDBApi2.Models;
+using Serilog;
+using Serilog.Events;
+using System.IO;
+using Serilog.Formatting.Compact;
 
 namespace UsersDBApi2
 {
@@ -15,12 +19,30 @@ namespace UsersDBApi2
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+
+            try
+            {
+                Log.Information("Starting web host");
+                var host = CreateHostBuilder(args).Build();
+                CreateDbIfNotExists(host);
+                host.Run();
+              
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+                
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+
             //CreateHostBuilder(args).Build().Run();
-            var host = CreateHostBuilder(args).Build();
 
-            CreateDbIfNotExists(host);
-
-            host.Run();
         }
         private static void CreateDbIfNotExists(IHost host)
         {
@@ -42,6 +64,7 @@ namespace UsersDBApi2
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

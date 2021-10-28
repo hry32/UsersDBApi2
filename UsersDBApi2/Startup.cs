@@ -11,7 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UsersDBApi2.Models;
-
+using Serilog;
+using UsersDBApi2.Services;
 
 namespace UsersDBApi2
 {
@@ -30,7 +31,7 @@ namespace UsersDBApi2
            var connection = Configuration.GetConnectionString("DBConnection");
            services.AddDbContextPool<UserContext>(options => options.UseSqlServer(connection));
            services.AddControllers();
-
+            services.AddScoped<IUserService, Userservice>();
 
             //services.AddDbContext<UserContext>(opt => opt.UseInMemoryDatabase("UserList"));
         }
@@ -42,7 +43,7 @@ namespace UsersDBApi2
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSerilogRequestLogging();
             app.UseRouting();
 
             app.UseAuthorization();
