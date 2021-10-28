@@ -10,9 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using UsersDBApi2.Models;
+//using UsersDBApi2.Models;
 using Serilog;
-using UsersDBApi2.Services;
+using Users.Services.Services;
+using Users.Data.Models;
 
 namespace UsersDBApi2
 {
@@ -29,10 +30,10 @@ namespace UsersDBApi2
         public void ConfigureServices(IServiceCollection services)
         {
            var connection = Configuration.GetConnectionString("DBConnection");
-           services.AddDbContextPool<UserContext>(options => options.UseSqlServer(connection));
-           services.AddControllers();
+        
+            services.AddDbContextPool<UserContext>(options => options.UseSqlServer(connection));
+            services.AddControllers();
             services.AddScoped<IUserService, Userservice>();
-
             //services.AddDbContext<UserContext>(opt => opt.UseInMemoryDatabase("UserList"));
         }
 

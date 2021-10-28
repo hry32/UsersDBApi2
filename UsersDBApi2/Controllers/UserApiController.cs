@@ -3,20 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersDBApi2.Models;
-using UsersDBApi2.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Users.Data.Models;
+using Users.Services.Services;
 
 namespace UsersDBApi2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersApiController : ControllerBase
+    public class UsersController : ControllerBase
 
     {
         private readonly IUserService _userService;
-        public UsersApiController(IUserService userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }

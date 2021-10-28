@@ -7,11 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersDBApi2.Models;
+using Users.Services.Services;
 using Serilog;
 using Serilog.Events;
 using System.IO;
 using Serilog.Formatting.Compact;
+using Users.Data.Models;
 
 namespace UsersDBApi2
 {

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
+using Users.Data;
 
-namespace UsersDBApi2.Models
+namespace Users.Data.Models
 {
     public static class DbInitializer
     {
@@ -19,11 +20,11 @@ namespace UsersDBApi2.Models
 
             var users = new User[]
             {
-            new User{FirstName="Roman",LastName="Harmatiuk",DateOfBirth=DateTime.Parse("1985-05-20")},
-            new User{FirstName="Ivan",LastName="Kozlov",DateOfBirth=DateTime.Parse("1965-12-12")},
-            new User{FirstName="Stepan",LastName="Kapusta",DateOfBirth=DateTime.Parse("2005-08-07")},
-            new User{FirstName="Petro",LastName="Stepanov",DateOfBirth=DateTime.Parse("1986-10-01")},
-            new User{FirstName="Yuriy",LastName="Amosov",DateOfBirth=DateTime.Parse("1976-02-23")},
+            new User{FirstName="CCC",LastName="Harmatiuk",DateOfBirth=DateTime.Parse("1985-05-20")},
+            new User{FirstName="CCC",LastName="Kozlov",DateOfBirth=DateTime.Parse("1965-12-12")},
+            new User{FirstName="CCC",LastName="Kapusta",DateOfBirth=DateTime.Parse("2005-08-07")},
+            new User{FirstName="CCC",LastName="Stepanov",DateOfBirth=DateTime.Parse("1986-10-01")},
+            new User{FirstName="CCC",LastName="Amosov",DateOfBirth=DateTime.Parse("1976-02-23")},
 
             };
             foreach (User s in users)
@@ -32,6 +33,5 @@ namespace UsersDBApi2.Models
             }
             context.SaveChanges();
         }
-
     }
 }

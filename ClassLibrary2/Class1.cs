@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Users.Domain
+
+namespace ClassLibrary2
 {
     public class Class1
     {
