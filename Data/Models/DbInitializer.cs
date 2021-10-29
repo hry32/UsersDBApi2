@@ -20,11 +20,11 @@ namespace Users.Data.Models
 
             var users = new User[]
             {
-            new User{FirstName="CCC",LastName="Harmatiuk",DateOfBirth=DateTime.Parse("1985-05-20")},
-            new User{FirstName="CCC",LastName="Kozlov",DateOfBirth=DateTime.Parse("1965-12-12")},
-            new User{FirstName="CCC",LastName="Kapusta",DateOfBirth=DateTime.Parse("2005-08-07")},
-            new User{FirstName="CCC",LastName="Stepanov",DateOfBirth=DateTime.Parse("1986-10-01")},
-            new User{FirstName="CCC",LastName="Amosov",DateOfBirth=DateTime.Parse("1976-02-23")},
+            new User{FirstName="Roman",LastName="Harmatiuk",DateOfBirth=DateTime.Parse("1985-05-20")},
+            new User{FirstName="Pavlo",LastName="Kozlov",DateOfBirth=DateTime.Parse("1965-12-12")},
+            new User{FirstName="Semen",LastName="Kapusta",DateOfBirth=DateTime.Parse("2005-08-07")},
+            new User{FirstName="Petro",LastName="Stepanov",DateOfBirth=DateTime.Parse("1986-10-01")},
+            new User{FirstName="Bogdan",LastName="Amosov",DateOfBirth=DateTime.Parse("1976-02-23")},
 
             };
             foreach (User s in users)

@@ -14,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Users.Services.Services;
 using Users.Data.Models;
+using Users.Data.Interfaces;
+using Users.Data.Settings;
+using Users.Services.Extensions;
 
 namespace UsersDBApi2
 {
@@ -35,6 +38,17 @@ namespace UsersDBApi2
             services.AddControllers();
             services.AddScoped<IUserService, Userservice>();
             //services.AddDbContext<UserContext>(opt => opt.UseInMemoryDatabase("UserList"));
+
+
+            services.AddHttpContextAccessor();
+            services.AddControllers();
+
+            services.AddTransient<ITenantService, TenantService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.Configure<TenantSettings>(Configuration.GetSection(nameof(TenantSettings)));
+            services.AddAndMigrateTenantDatabases(Configuration);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
